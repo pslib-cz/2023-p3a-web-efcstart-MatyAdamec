@@ -5,6 +5,18 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h2>FIles</h2>
+
+        <ul>
+        @foreach (var folder in @Model.Folders)
+        {
+            <li>@folder.Name</li>
+        }
+        </ul>
+
 </div>
+
+@*
+
+<li>folder.name <a asp-route-openId="@folder.FolderId" asp-route-folderId="@folder.ParentFolder"> </a></li>
+*@ 
