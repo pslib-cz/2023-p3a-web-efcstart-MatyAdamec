@@ -2,6 +2,7 @@
 using FilesBrowser.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace FilesBrowser.Pages
 {
@@ -15,10 +16,9 @@ namespace FilesBrowser.Pages
 
         public IndexModel(ILogger<IndexModel> logger, AppDbContext context)
         {
-            _logger = logger;
             _context = context;
         }
-
+        
         public void OnGet()
         {
             Folders = _context.Folders.ToList();

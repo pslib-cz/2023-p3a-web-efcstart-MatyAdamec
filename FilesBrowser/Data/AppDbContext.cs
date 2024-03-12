@@ -13,20 +13,20 @@ namespace FilesBrowser.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var MusicId = Guid.NewGuid();
             var ImagesId = Guid.NewGuid();
+            var MyPhotosId = Guid.NewGuid();
+            var MusicId = Guid.NewGuid();
+            var YeMusicId = Guid.NewGuid();
+            var YourPhotosId = Guid.NewGuid();
             var GymPlaylistId = Guid.NewGuid();
-            var WhiteGirlMusicId = Guid.NewGuid();
-            var MyMomPhotosId = Guid.NewGuid();
-            var MyDadPhotosId = Guid.NewGuid();
 
             modelBuilder.Entity<Folder>().HasData(
                 new Folder { FolderId = MusicId, Name = "Music", ParentFolderId = null },
+                new Folder { FolderId = GymPlaylistId, Name = "gym", ParentFolderId = MusicId },
+                new Folder { FolderId = YeMusicId, Name = "Ye", ParentFolderId = MusicId },
                 new Folder { FolderId = ImagesId, Name = "Images", ParentFolderId = null },
-                new Folder { FolderId = GymPlaylistId, Name = "GymPlalist", ParentFolderId = MusicId },
-                new Folder { FolderId = WhiteGirlMusicId, Name = "WhiteGirlMusic", ParentFolderId = MusicId },
-                new Folder { FolderId = MyMomPhotosId, Name = "MyMomPhotos", ParentFolderId = ImagesId },
-                new Folder { FolderId = MyDadPhotosId, Name = "MyDadPhotos", ParentFolderId = ImagesId }
+                new Folder { FolderId = YourPhotosId, Name = "YourPhotos", ParentFolderId = ImagesId },
+                new Folder { FolderId = MyPhotosId, Name = "MyPhotos", ParentFolderId = ImagesId }
             );
         }
 

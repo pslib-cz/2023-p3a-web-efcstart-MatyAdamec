@@ -4,19 +4,28 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h2>FIles</h2>
+<div >
+    <h2>Files</h2>
 
-        <ul>
-        @foreach (var folder in @Model.Folders)
-        {
-            <li>@folder.Name</li>
+    <ul>
+    @foreach (var folder in @Model.Folders)
+    {
+            <li>
+                @folder.Name
+                @if (folder.Subfolders != null)
+                {
+                    <a asp-route-openId="@folder.FolderId" asp-route-folderId="@folder.ParentFolderId">open</a>
+                }
+            </li>
+            @if (folder.Subfolders != null)
+            {
+            <ul>
+                @foreach (var child in folder.Subfolders)
+                {
+                    <li>@child.Name</li>
+                }
+            </ul>
         }
-        </ul>
-
+    }
+    </ul>
 </div>
-
-@*
-
-<li>folder.name <a asp-route-openId="@folder.FolderId" asp-route-folderId="@folder.ParentFolder"> </a></li>
-*@ 
