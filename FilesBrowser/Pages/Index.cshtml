@@ -8,24 +8,24 @@
     <h2>Files</h2>
 
     <ul>
-    @foreach (var folder in @Model.Folders)
-    {
+        @foreach (var folder in Model.Folders)
+        {
             <li>
                 @folder.Name
-                @if (folder.Subfolders != null)
+                @if (!folder.Subfolders.Any())
                 {
-                    <a asp-route-openId="@folder.FolderId" asp-route-folderId="@folder.ParentFolderId">open</a>
+                    <a href="?openId=@folder.FolderId">Open</a>
+                }
+                else
+                {
+                    <ul>
+                        @foreach (var subfolder in folder.Subfolders)
+                        {
+                            <li>@subfolder.Name</li>
+                        }
+                    </ul>
                 }
             </li>
-            @if (folder.Subfolders != null)
-            {
-            <ul>
-                @foreach (var child in folder.Subfolders)
-                {
-                    <li>@child.Name</li>
-                }
-            </ul>
         }
-    }
     </ul>
 </div>

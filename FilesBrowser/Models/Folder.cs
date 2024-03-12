@@ -15,7 +15,7 @@ namespace FilesBrowser.Models
 
         [ForeignKey("ParentFolderId")]
         public Folder ParentFolder { get; set; }
-        public ICollection<Folder> Subfolders { get; set; }
+        public ICollection<Folder> Subfolders { get; set; } = new List<Folder>();
 
     }
 }
